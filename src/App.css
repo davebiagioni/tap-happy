@@ -1,38 +1,116 @@
-.App {
+/* Global Styles */
+body {
+  font-family: 'Poppins', sans-serif; /* Playful font */
+  font-size: 1rem;
+  color: #333;
+  background-color: #fef9ef; /* Soft pastel background */
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #6c63ff; /* Playful purple */
   text-align: center;
+  margin: 1.5rem 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Calendar */
+.calendar {
+  margin: 1rem auto;
+  max-width: 95%; /* Responsive width */
+  min-width: 320px; /* Minimum width for small screens */
+  min-height: 350px; /* Ensure enough height for all rows */
+  background-color: #fef9ef; /* Pastel background */
+  border-radius: 16px; /* Rounded edges */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Calendar Tile: Ensure consistent size */
+.calendar .react-calendar__tile {
+  position: relative; /* Allow for dot positioning */
+  display: flex; /* Center content */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-color: #ffffff; /* White background */
+  border-radius: 12px;
+  margin: 0.3rem;
+  font-weight: bold;
+  color: #333;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  height: 50px; /* Fixed height */
+  width: 50px; /* Fixed width */
+  box-sizing: border-box; /* Ensure padding doesn't affect size */
 }
 
-.App-link {
-  color: #61dafb;
+/* Calendar Tile Content: Reserve space for dots */
+.calendar .react-calendar__tile-content {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex; /* Enable side-by-side dots */
+  gap: 5px; /* Space between dots */
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Dots */
+.calendar .dot {
+  width: 8px; /* Dot size */
+  height: 8px;
+  border-radius: 50%; /* Circle shape */
+}
+
+/* Green dot for alcohol-free days */
+.calendar .dot.green {
+  background-color: #28a745;
+}
+
+/* Purple dot for exercise days */
+.calendar .dot.purple {
+  background-color: #6c63ff;
+}
+
+.calendar .react-calendar__tile:hover {
+  background-color: #ffd1dc; /* Light pink hover */
+  transform: scale(1.1); /* Zoom effect */
+}
+
+.calendar .react-calendar__tile--active {
+  background-color: #6c63ff; /* Purple for selected dates */
+  color: #ffffff; /* White text */
+  transform: scale(1.15); /* Bigger scale for active */
+}
+
+/* Calendar Legend */
+.calendar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.calendar-legend div {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.calendar-legend div span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+}
+
+.legend-alcohol-free span {
+  background-color: #28a745; /* Green for alcohol-free */
+}
+
+.legend-exercise span {
+  background-color: #6c63ff; /* Purple for exercise */
 }
